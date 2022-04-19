@@ -21,3 +21,11 @@ ul {
   width: 100px;
   height: 100px;
 }
+
+/* footer */
+.footer {
+  border: 2.5px solid black;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
