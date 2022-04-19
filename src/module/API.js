@@ -1,4 +1,4 @@
-const url = 'https://api.tvmaze.com/schedule/full';
+const url = 'https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood';
 
 const getItemsList = async () => {
   const request = new Request(url);
