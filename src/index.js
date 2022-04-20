@@ -4,9 +4,13 @@ import './index.html';
 import 'boxicons';
 import API from './module/API.js';
 import DOM from './module/DOM.js';
+import { postData } from './module/involveApi.js';
+import { getItemFromApi} from './module/involveApi.js';
+
 
 let dynamicSection;
 let cbList;
+let innerButtonClick;
 window.addEventListener('load', () => {
   API.getItemsList()
     .then((resolve) => {
@@ -19,7 +23,7 @@ window.addEventListener('load', () => {
           popUpWindow.className = 'pop-up-window';
 
           const mainImagePopup = document.createElement('img');
-          mainImagePopup.src = 'https://cdn.pixabay.com/photo/2017/01/26/02/06/platter-2009590__340.jpg';
+          mainImagePopup.src = 'item.strMealThumb';
           mainImagePopup.className = 'popup-img';
 
           const h2 = document.createElement('h2');
@@ -42,9 +46,6 @@ window.addEventListener('load', () => {
 
           const displyText = document.createElement('div');
           displyText.className = 'display-text';
-
-          // popUpWindow.appendChild(commentTitle, nameInput, messageInput, innerButton, displyText);
-          // dynamicSection.appendChild(popUpWindow); 
           
           popUpWindow.appendChild(mainImagePopup);
           popUpWindow.appendChild(h2);
@@ -57,8 +58,19 @@ window.addEventListener('load', () => {
             
         });
         });
-    });
+    })
 });
+
+// .then(() => {
+//   innerButtonClick = document.querySelectorAll('.inner-button');
+//   innerButtonClick.addEventListener('click', () => {
+    
+//   })
+// });
+
+
+
+
 
 
 

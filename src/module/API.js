@@ -8,5 +8,12 @@ const getItemsList = async () => {
 };
 
 
-
+getItemsList();
 export default { getItemsList };
+
+
+// {
+//   "item_id": "shubh",
+//   "username": "Jane",
+//   "comment": "Hello"
+// }
