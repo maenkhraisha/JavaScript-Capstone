@@ -71,3 +71,29 @@ ul {
   padding: 2rem;
   box-shadow: 5px 10px black;
 }
+
+.test-dynami {
+  margin: auto;
+}
+
+.popup-img {
+  width: 50vw;
+  height: 40vh;
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.pop-up-window {
+  width: 90%;
+  height: 90%;
+  background-color: aqua;
+  border: 2px black dashed;
+  left: 0;
+  top: 0;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 5vh;
+  margin-top: 4vh;
+}

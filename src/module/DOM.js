@@ -27,7 +27,8 @@ const createItems = (itemsList) => {
     const ELBtnComment = document.createElement('button');
     ELBtnComment.className = 'btn btn-comment';
     ELBtnComment.innerText = 'Comment';
-
+    ELBtnComment.setAttribute('code', item.idMeal)
+    
     const ELBtnReservation = document.createElement('button');
     ELBtnReservation.className = 'btn btn-reservation';
     ELBtnReservation.innerText = 'Reservation';
