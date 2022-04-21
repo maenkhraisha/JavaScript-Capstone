@@ -18,6 +18,7 @@ const createItems = (itemsList) => {
 
     const ELImgHeart = document.createElement('box-icon');
     ELImgHeart.setAttribute('name', 'heart');
+    ELImgHeart.setAttribute('id', item.idMeal);
     ELImgHeart.className = 'icon-heart';
 
     const ELLikeCount = document.createElement('h5');
