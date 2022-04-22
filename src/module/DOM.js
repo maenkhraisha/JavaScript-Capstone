@@ -35,6 +35,7 @@ const buildList = (itemsList, likesArray) => {
     const ELLikeCount = document.createElement('h5');
     const likeCount = getLikesNoByID(item.idMeal, likesArray);
     ELLikeCount.innerText = `${likeCount} Likes`;
+    ELLikeCount.setAttribute('id', item.itemID);
     ELLikeCount.className = 'items-like-count';
 
     const ELBtnComment = document.createElement('button');
@@ -55,13 +56,22 @@ const buildList = (itemsList, likesArray) => {
   });
 };
 
-const createItems = async (itemsList) => {
+const createItems = (itemsList) => {
   let likesArray;
   involvmentAPI.getLikes()
     .then((resolve) => {
       likesArray = resolve;
     }).then(() => {
       buildList(itemsList, likesArray);
+    }).then(() => {
+      const iconList = document.querySelectorAll('.icon-heart');
+      iconList.forEach.call(iconList, (icon) => {
+        icon.addEventListener('click', () => {
+          involvmentAPI.addLike(icon.id);
+          const LikesNo = `${getLikesNoByID(icon.id, likesArray) + 1} Likes`;
+          icon.nextElementSibling.innerText = LikesNo;
+        });
+      });
     });
 };
 
