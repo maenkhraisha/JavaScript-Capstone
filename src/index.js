@@ -8,11 +8,9 @@ import Involvment from './module/involvment_API.js';
 
 const addEventToIcon = () => {
   const iconList = document.querySelectorAll('.items-like-count');
-  console.log(iconList);
   iconList.forEach.call(iconList, (icon) => {
     icon.addEventListener('click', () => {
       Involvment.addLike(icon.id);
-      console.log('eee');
     });
   });
 };
