@@ -2,12 +2,12 @@
 
 const LikeURL = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/9EwJcgG9IrTEsjQ0U1pz/likes/';
 
-// const getLikes = async () => {
-//   const request = new Request(involvementAPIURL);
-//   const response = await fetch(request);
-//   const data = await response.json();
-//   return data;
-// };
+const getLikes = async () => {
+  const request = new Request(LikeURL);
+  const response = await fetch(request);
+  const data = await response.json();
+  return data;
+};
 
 const addLike = async (itemID) => {
   const request = new Request(LikeURL);
@@ -22,9 +22,4 @@ const addLike = async (itemID) => {
   });
 };
 
-// const checkIfItemExist = (data, itemID) => {
-//   const find = data.find((element) => element.item_id === itemID);
-//   return find !== undefined;
-// };
-
-export default { addLike };
+export default { addLike, getLikes };

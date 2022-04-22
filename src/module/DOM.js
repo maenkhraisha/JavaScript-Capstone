@@ -1,9 +1,20 @@
+import involvmentAPI from './involvment_API.js';
+
 const ELMainSection = document.querySelector('.items-list');
 const ELContainer = document.createElement('div');
 ELContainer.className = 'items-container';
 ELMainSection.appendChild(ELContainer);
 
-const createItems = (itemsList) => {
+const getLikesNoByID = (itemID, likesArray) => {
+  for (let i = 0; i < likesArray.length; i += 1) {
+    if (likesArray[i].item_id === itemID) {
+      return likesArray[i].likes;
+    }
+  }
+  return 0;
+};
+
+const buildList = (itemsList, likesArray) => {
   itemsList.forEach((item) => {
     const ELItem = document.createElement('div');
     ELItem.className = 'items';
@@ -22,7 +33,8 @@ const createItems = (itemsList) => {
     ELImgHeart.className = 'icon-heart';
 
     const ELLikeCount = document.createElement('h5');
-    ELLikeCount.innerText = '0 Likes';
+    const likeCount = getLikesNoByID(item.idMeal, likesArray);
+    ELLikeCount.innerText = `${likeCount} Likes`;
     ELLikeCount.className = 'items-like-count';
 
     const ELBtnComment = document.createElement('button');
@@ -41,6 +53,16 @@ const createItems = (itemsList) => {
     ELItem.appendChild(ELBtnReservation);
     ELContainer.appendChild(ELItem);
   });
+};
+
+const createItems = async (itemsList) => {
+  let likesArray;
+  involvmentAPI.getLikes()
+    .then((resolve) => {
+      likesArray = resolve;
+    }).then(() => {
+      buildList(itemsList, likesArray);
+    });
 };
 
 export default { createItems };
