@@ -17,6 +17,11 @@ ul {
   align-items: center;
 }
 
+.items-counter {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .logo {
   width: 100px;
   height: 100px;
