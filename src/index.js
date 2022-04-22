@@ -4,14 +4,13 @@ import './index.html';
 import 'boxicons';
 import API from './module/API.js';
 import DOM from './module/DOM.js';
-// import { postData } from './module/involveApi.js';
-// import { getItemFromApi} from './module/involveApi.js';
 
-const apiUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/kUchJcdqjG77aDKZUYlr/comments/';
-const apiUrl2 = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/kUchJcdqjG77aDKZUYlr/comments?item_id=item1'
+const apiUrl = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/5N1xL5GNxbBSdrn7etmt/comments';
+const apiUrl2 = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/5N1xL5GNxbBSdrn7etmt/comments?item_id=item2';
 
 let dynamicSection;
 let cbList;
+let nameInput, messageInput, innerButton, displyText, commentCountDiv;
 window.addEventListener('load', () => {
   API.getItemsList()
     .then((resolve) => {
@@ -24,7 +23,7 @@ window.addEventListener('load', () => {
           popUpWindow.className = 'pop-up-window';
 
           const mainImagePopup = document.createElement('img');
-          mainImagePopup.src = 'https://cdn.pixabay.com/photo/2010/12/13/10/05/berries-2277__480.jpg';
+          mainImagePopup.src = item.strMealThumb;
           mainImagePopup.className = 'popup-img';
 
           const h2 = document.createElement('h2');
@@ -34,71 +33,75 @@ window.addEventListener('load', () => {
           commentTitle.className = 'comment-title';
           commentTitle.textContent = 'Add a comment';
 
-          const nameInput = document.createElement('input');
+          nameInput = document.createElement('input');
           nameInput.type = 'text';
           nameInput.classname = 'name-input-holder';
 
-          const messageInput = document.createElement('textarea');
+          messageInput = document.createElement('textarea');
           messageInput.className = 'text-area';
 
-          const innerButton = document.createElement('button');
+          innerButton = document.createElement('button');
           innerButton.className = 'inner-button';
           innerButton.textContent = 'Comment';
 
-          const displyText = document.createElement('div');
+          commentCountDiv = document.createElement('div');
+          commentCountDiv.className = 'comment-count-div';
+
+          displyText = document.createElement('div');
           displyText.className = 'display-text';
 
           popUpWindow.appendChild(mainImagePopup);
           popUpWindow.appendChild(h2);
+          popUpWindow.appendChild(commentCountDiv);
           popUpWindow.appendChild(displyText);
           popUpWindow.appendChild(commentTitle);
           popUpWindow.appendChild(nameInput);
           popUpWindow.appendChild(messageInput);
           popUpWindow.appendChild(innerButton);
-          dynamicSection = document.querySelector('.test-dynami')
+          dynamicSection = document.querySelector('.test-dynami');
           dynamicSection.appendChild(popUpWindow);
 
-          innerButton.addEventListener('click', () => {
-            // commentButtonId = cbList.id;
-            fetch(apiUrl, {
-              method: 'POST',
-              body: JSON.stringify({
-                item_id: 'abc123',
-                username: nameInput.value,
-                comment: messageInput.value
-              }),
-              headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-              },
-            }).then((res) => console.log(res.status));
-
-            const commentDataApi = fetch(apiUrl2).then(response => response.json())
-            .then(json => displyText.append(json[0]));
-            
-           
-            
-            // console.log(commentDataApi);
-            // commentDataApi.prototype.forEach.call((commentDataApi.item, (item) => {
-            //  console.log(item)
-          //  }));
-
-          });
+          getDataFromApi();
+          innerButtonClickFunc();
+          
 
         });
+
       });
     });
 });
 
-// const getAllComments = async (id) => {
-//   const allComments = await getComments(id);
-//   commentCount.textContent = `Comments (${allComments.length})`;
-//   commentList.innerHTML = '';
-//   allComments.forEach((e) => {
-//     commentList.innerHTML += `
-//     <li>${e.creation_date}  ${e.username}:  ${e.comment}</li>
-//     `;
-//   });
-// };
+
+const innerButtonClickFunc = async () => {
+  innerButton.addEventListener('click', () => {
+    if (!nameInput.value == '' || !messageInput.value == '') {
+      const postDataToApi =  fetch(apiUrl, {
+        method: 'POST',
+        body: JSON.stringify({
+          item_id: 'item2',
+          username: nameInput.value,
+          comment: messageInput.value
+        }),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((res) => console.log(res.status));
+    };
+    getDataFromApi();
+  });
+  
+}
+
+const getDataFromApi = async () => {
+  await fetch(apiUrl2).then(response => response.json())
+    .then(json => json.forEach((e) => {
+      displyText.innerHTML = `<li> ${e.creation_date} ${e.username} : ${e.comment}`;
+      commentCountDiv.textContent = `comments ${json.length}`;
+    })
+    );
+};
+
+console.log(mainImagePopup.src)
 
 
 
