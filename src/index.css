@@ -8,13 +8,23 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: blue;
+}
+
 /* header */
 .navbar {
   display: flex;
   gap: 2rem;
-  justify-content: center;
+  justify-content: left;
   margin-top: 1rem;
+  margin-left: 5rem;
   align-items: center;
+  font-size: 2rem;
 }
 
 .items-counter {
@@ -72,7 +82,7 @@ ul {
 .footer {
   border: 2.5px solid black;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   padding: 2rem;
   box-shadow: 5px 10px black;
 }

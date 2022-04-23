@@ -31,6 +31,10 @@ API link (https://www.themealdb.com/api.php)
 
 ## Getting Started
 
+Short video descrip the application 
+https://www.loom.com/share/c7bcf0941a124a808de4ed3aff0fcaaf
+
+
 **First open VS code**<br/>
 **From the VS code terminal navigate to the folder where you want to download the project**<br/>
 ```
@@ -38,6 +42,7 @@ $ git clone git@github.com:maen1980/JavaScript-Capstone.git
 ```
 use npm install
 use npm start
+npm test
 
 
 ### Prerequisites
