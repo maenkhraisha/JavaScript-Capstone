@@ -9,6 +9,7 @@ const createItems = (itemsList) => {
     ELItem.className = 'items';
 
     const ELImg = document.createElement('img');
+    ELImg.setAttribute('id', item.idMeal);
     ELImg.src = item.strMealThumb;
     ELImg.className = 'items-image';
 

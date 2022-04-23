@@ -62,6 +62,7 @@ ul {
   padding: 0.25rem;
   align-self: center;
   box-shadow: 3px 3px black;
+  cursor: pointer;
 }
 
 /* footer */
@@ -97,4 +98,19 @@ ul {
   align-items: center;
   margin-left: 5vh;
   margin-top: 4vh;
+}
+
+.cross-btn {
+  margin-left: 85vw;
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.name-input-holder {
+ margin-bottom: 10px;
+ height: 30px;
+}
+
+.text-area {
+  margin-bottom: 10px;
 }
