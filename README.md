@@ -34,7 +34,7 @@ API link (https://www.themealdb.com/api.php)
 **First open VS code**<br/>
 **From the VS code terminal navigate to the folder where you want to download the project**<br/>
 ```
-$ git clone git@github.com:maen1980/To-Do-list.git
+$ git clone git@github.com:maen1980/JavaScript-Capstone.git
 ```
 use npm install
 use npm start
