@@ -1,18 +1,10 @@
 import involvmentAPI from './involvment_API.js';
+import getLikesNoByID from './util.js';
 
 const ELMainSection = document.querySelector('.items-list');
 const ELContainer = document.createElement('div');
 ELContainer.className = 'items-container';
 ELMainSection.appendChild(ELContainer);
-
-const getLikesNoByID = (itemID, likesArray) => {
-  for (let i = 0; i < likesArray.length; i += 1) {
-    if (likesArray[i].item_id === itemID) {
-      return likesArray[i].likes;
-    }
-  }
-  return 0;
-};
 
 const buildList = (itemsList, likesArray) => {
   itemsList.forEach((item) => {

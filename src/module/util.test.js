@@ -1,4 +1,4 @@
-const getLikesNoByID = require('./src/module/DOM.js');
+const getLikesNoByID = require('./util.js');
 
 it('work', () => {
   expect(getLikesNoByID('52819',
